@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌦 Weather App</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <h1>Choose a country :</h1>
+            <div class="center">
+                <form action="/submit" id="form" class="form" method="POST">
+                    <select name="country" class="form-select">
+                        <option value="" data-display="Select">Choose a Country :</option>
+                        <option value="0">Oman</option>
+                        <option value="1">UAE</option>
+                    </select>
+                    <button type="submit" class="form-submit">Go</button>
+                </form>
+            </div>
+
+            <div>
+                <% if (locals.data){ %>
+                    <div >
+                        <div class="grids">
+                            <p class="p">Time</p>
+                            <p class="p">C</p>
+                            <p class="p">Time</p>
+                            <p class="p">C</p>
+                        </div>   
+                    </div>
+                <% } %>
+                <hr/>
+                <div class="flex">
+                    <div class="flex">
+                        <% if (locals.data){%>
+                            <div class="border1">
+                                <% for (var i=0; i<time.length && i < 12; i++){ %>
+                                    <p class="time" style="color: #EBE3D5;"><%= time[i].slice(11) %></p>
+                                <% } %>
+                            </div>
+                            <div class="border2">
+                                <% for (var i=0; i<temperature.length && i < 12; i++){ %>
+                                    <p class="time" style="color: #FFE6C7;"><%= temperature[i] %></p>
+                                <% } %> 
+                            </div>    
+                        <% } else { %>
+                            <p class="time">Select the data plz!!</p>
+                        <% } %>
+                    </div>
+                    <div class="flex">
+                        <% if (locals.data){%>
+                            <div class="border3">
+                                <% for (var i=12; i<time.length; i++){ %>
+                                    <p class="time" style="color: #EBE3D5;"><%= time[i].slice(11) %></p>
+                                <% } %>
+                            </div>
+                            <div class="border4">
+                                <% for (var i=12; i<temperature.length; i++){ %>
+                                    <p class="time" style="color: #FFE6C7;"><%= temperature[i] %></p>
+                                <% } %> 
+                            </div>    
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
