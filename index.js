@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.post("/submit", async (req, res) => {
     try{
-        const response = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=21,23.75&longitude=57,54.5&hourly=temperature_2m&forecast_days=1");
+        const response = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=21,23.75,39.9523&longitude=57,54.5,-75.1638&hourly=temperature_2m&forecast_days=1");
         const result = response.data;
         const time = result[req.body["country"]].hourly.time;
         const temperature = result[req.body["country"]].hourly.temperature_2m;
